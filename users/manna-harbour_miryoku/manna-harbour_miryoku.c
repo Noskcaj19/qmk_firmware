@@ -7,17 +7,38 @@
 
 #include "manna-harbour_miryoku.h"
 
-enum layers { MIRYOKU_LAYER_NAMES };
+enum layers { MIRYOKU_LAYER_NAMES, GAME };
+
+
+#define MIRYOKU_LAYER_GAME \
+     KC_ESC,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                         KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_GRAVE, \
+     MO(NUM), KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                         KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT, \
+     KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, TG(GAME),  \
+                                         KC_LCTL, KC_LALT, KC_SPC,     KC_ENT, KC_BSPC, KC_LGUI
+
+#define MIRYOKU_LAYER_BASE_WIDE \
+     XXXXXXX, KC_Y,             KC_C,          KC_L,         KC_M,         KC_K,  /*|*/   KC_Z, KC_F,         KC_U,         KC_COMM,        KC_QUOT,          XXXXXXX, \
+     XXXXXXX, LGUI_T(KC_I),     LALT_T(KC_S),  LCTL_T(KC_R), LSFT_T(KC_T), KC_G,  /*|*/   KC_P, LSFT_T(KC_N), LCTL_T(KC_E), LALT_T(KC_A),   LGUI_T(KC_O),     XXXXXXX,  \
+     XXXXXXX, LT(BUTTON, KC_Q), ALGR_T(KC_V),  KC_W,         KC_D,         KC_J,  /*|*/   KC_B, KC_H,         KC_SLSH,      ALGR_T(KC_DOT), LT(BUTTON, KC_X), TG(GAME),  \
+                        LT(MEDIA, KC_ESC),   LT(NAV, KC_SPC),   LT(MOUSE, KC_TAB),      LT(SYM, KC_ENT),   LT(NUM, KC_BSPC),   LT(FUN, KC_DEL)
+
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-  [BASE]   = U_MACRO_VA_ARGS(LAYOUT_miryoku, MIRYOKU_LAYER_BASE),
+  [BASE]   = U_MACRO_VA_ARGS(LAYOUT_split_3x6_3, MIRYOKU_LAYER_BASE_WIDE),
   [NAV]    = U_MACRO_VA_ARGS(LAYOUT_miryoku, MIRYOKU_LAYER_NAV),
   [MOUSE]  = U_MACRO_VA_ARGS(LAYOUT_miryoku, MIRYOKU_LAYER_MOUSE),
   [MEDIA]  = U_MACRO_VA_ARGS(LAYOUT_miryoku, MIRYOKU_LAYER_MEDIA),
   [NUM]    = U_MACRO_VA_ARGS(LAYOUT_miryoku, MIRYOKU_LAYER_NUM),
   [SYM]    = U_MACRO_VA_ARGS(LAYOUT_miryoku, MIRYOKU_LAYER_SYM),
   [FUN]    = U_MACRO_VA_ARGS(LAYOUT_miryoku, MIRYOKU_LAYER_FUN),
-  [BUTTON] = U_MACRO_VA_ARGS(LAYOUT_miryoku, MIRYOKU_LAYER_BUTTON)
+  [BUTTON] = U_MACRO_VA_ARGS(LAYOUT_miryoku, MIRYOKU_LAYER_BUTTON),
+  [GAME]   = U_MACRO_VA_ARGS(LAYOUT_split_3x6_3, MIRYOKU_LAYER_GAME)
+};
+
+
+const uint16_t PROGMEM game_tab[] = {KC_ESC, MO(NUM), COMBO_END};
+combo_t key_combos[COMBO_COUNT] = {
+    COMBO(game_tab, KC_TAB),
 };
 
 #if defined (MIRYOKU_KLUDGE_THUMBCOMBOS)
