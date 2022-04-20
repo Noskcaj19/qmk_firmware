@@ -9,17 +9,36 @@
 
 enum layers { MIRYOKU_LAYER_NAMES, GAME };
 
+enum {
+  TD_GAME,
+};
+
+void dance_game_finished(qk_tap_dance_state_t *state, void *user_data) {
+    if (state->count == 1) {
+    } else {
+        if (layer_state_is(GAME)) {
+            layer_off(GAME);
+        } else {
+            layer_on(GAME);
+        }
+    }
+}
+
+qk_tap_dance_action_t tap_dance_actions[] = {
+    [TD_GAME] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, dance_game_finished, NULL),
+};
+
 
 #define MIRYOKU_LAYER_GAME \
      KC_ESC,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                         KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_GRAVE, \
      MO(NUM), KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                         KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT, \
-     KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, TG(GAME),  \
+     KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, TD(TD_GAME),  \
                                          KC_LCTL, KC_LALT, KC_SPC,     KC_ENT, KC_BSPC, KC_LGUI
 
 #define MIRYOKU_LAYER_BASE_WIDE \
      XXXXXXX, KC_Y,             KC_C,          KC_L,         KC_M,         KC_K,  /*|*/   KC_Z, KC_F,         KC_U,         KC_COMM,        KC_QUOT,          XXXXXXX, \
      XXXXXXX, LGUI_T(KC_I),     LALT_T(KC_S),  LCTL_T(KC_R), LSFT_T(KC_T), KC_G,  /*|*/   KC_P, LSFT_T(KC_N), LCTL_T(KC_E), LALT_T(KC_A),   LGUI_T(KC_O),     XXXXXXX,  \
-     XXXXXXX, LT(BUTTON, KC_Q), ALGR_T(KC_V),  KC_W,         KC_D,         KC_J,  /*|*/   KC_B, KC_H,         KC_SLSH,      ALGR_T(KC_DOT), LT(BUTTON, KC_X), TG(GAME),  \
+     XXXXXXX, LT(BUTTON, KC_Q), ALGR_T(KC_V),  KC_W,         KC_D,         KC_J,  /*|*/   KC_B, KC_H,         KC_SLSH,      ALGR_T(KC_DOT), LT(BUTTON, KC_X), TD(TD_GAME),  \
                         LT(MEDIA, KC_ESC),   LT(NAV, KC_SPC),   LT(MOUSE, KC_TAB),      LT(SYM, KC_ENT),   LT(NUM, KC_BSPC),   LT(FUN, KC_DEL)
 
 

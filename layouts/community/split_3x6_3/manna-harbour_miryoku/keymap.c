@@ -18,7 +18,7 @@ enum layers { MIRYOKU_LAYER_NAMES, GAME };
 
 void rgb_matrix_indicators_kb(void) {
     if (layer_state_is(GAME)) {
-        rgb_matrix_set_color_all(0, 0, 10);
+        rgb_matrix_set_color_all(0, 0, 5);
     } else {
         rgb_matrix_set_color_all(0, 0, 0);
     }
