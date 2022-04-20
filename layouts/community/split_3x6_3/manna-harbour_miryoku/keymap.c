@@ -6,7 +6,7 @@
 
 #include "manna-harbour_miryoku.h"
 
-enum layers { MIRYOKU_LAYER_NAMES, GAME };
+enum layers { MIRYOKU_LAYER_NAMES, GAME, GAME_NUM };
 
 //bool get_tapping_force_hold(uint16_t keycode, keyrecord_t *record) {
     // if ((keycode & 0xFF) == KC_BSPC) {
@@ -22,4 +22,12 @@ void rgb_matrix_indicators_kb(void) {
     } else {
         rgb_matrix_set_color_all(0, 0, 0);
     }
+
+    if (host_keyboard_led_state().caps_lock) {
+        if (layer_state_is(GAME)) {
+            rgb_matrix_set_color(35, 25, 0, 0);
+        } else {
+            rgb_matrix_set_color(35, 25, 25, 25);
+        }
+    } 
 }
