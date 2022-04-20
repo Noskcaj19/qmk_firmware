@@ -7,7 +7,7 @@
 
 #include "manna-harbour_miryoku.h"
 
-enum layers { MIRYOKU_LAYER_NAMES, GAME };
+enum layers { MIRYOKU_LAYER_NAMES, GAME, GAME_NUM };
 
 enum {
   TD_GAME,
@@ -28,12 +28,17 @@ qk_tap_dance_action_t tap_dance_actions[] = {
     [TD_GAME] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, dance_game_finished, NULL),
 };
 
+#define MIRYOKU_LAYER_GAME_NUM \
+    KC_NO,        KC_6,    KC_7,    KC_8,    KC_9,      KC_0,                   U_NA,   U_NA,    U_NA,    U_NA,    RESET,   KC_NO, \
+    MO(GAME_NUM), KC_1,    KC_2,    KC_3,    KC_4,      KC_5,                   U_NA,   KC_LSFT, KC_LCTL, KC_LALT, KC_LGUI, KC_NO, \
+    KC_NO,        KC_NO,   KC_NO,   KC_NO,   KC_GRAVE,  KC_NO,                  U_NA,   U_NA,    U_NA,    KC_ALGR, U_NA,    KC_NO, \
+                                          KC_DOT,  KC_0,   KC_MINS,     KC_NO,  KC_NO ,  KC_NO 
 
 #define MIRYOKU_LAYER_GAME \
      KC_ESC,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                         KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_GRAVE, \
-     MO(NUM), KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                         KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT, \
+     MO(GAME_NUM), KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT, \
      KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, TD(TD_GAME),  \
-                                         KC_LCTL, KC_LALT, KC_SPC,     KC_ENT, KC_BSPC, KC_LGUI
+                                          KC_LCTL, KC_LALT, KC_SPC,     KC_ENT, KC_BSPC, KC_LGUI
 
 #define MIRYOKU_LAYER_BASE_WIDE \
      XXXXXXX, KC_Y,             KC_C,          KC_L,         KC_M,         KC_K,  /*|*/   KC_Z, KC_F,         KC_U,         KC_COMM,        KC_QUOT,          XXXXXXX, \
@@ -51,7 +56,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [SYM]    = U_MACRO_VA_ARGS(LAYOUT_miryoku, MIRYOKU_LAYER_SYM),
   [FUN]    = U_MACRO_VA_ARGS(LAYOUT_miryoku, MIRYOKU_LAYER_FUN),
   [BUTTON] = U_MACRO_VA_ARGS(LAYOUT_miryoku, MIRYOKU_LAYER_BUTTON),
-  [GAME]   = U_MACRO_VA_ARGS(LAYOUT_split_3x6_3, MIRYOKU_LAYER_GAME)
+  [GAME]   = U_MACRO_VA_ARGS(LAYOUT_split_3x6_3, MIRYOKU_LAYER_GAME),
+  [GAME_NUM] = U_MACRO_VA_ARGS(LAYOUT_split_3x6_3, MIRYOKU_LAYER_GAME_NUM),
 };
 
 
