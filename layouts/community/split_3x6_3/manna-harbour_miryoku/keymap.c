@@ -17,9 +17,43 @@ enum layers { MIRYOKU_LAYER_NAMES, GAME, GAME_NUM };
 //}
 
 void rgb_matrix_indicators_kb(void) {
+    bool set = false;
+    if (layer_state_is(NUM)) {
+        rgb_matrix_set_color_all(0, 0, 7);
+        set = true;
+    }
+
+    if (layer_state_is(MOUSE)) {
+        rgb_matrix_set_color_all(7, 7, 0);
+        set = true;
+    }
+
     if (layer_state_is(GAME)) {
-        rgb_matrix_set_color_all(0, 0, 5);
-    } else {
+        rgb_matrix_set_color_all(0, 0, 7);
+        set = true;
+    }
+
+    if (layer_state_is(SYM)) {
+        rgb_matrix_set_color_all(0, 7, 0);
+        set = true;
+    }
+
+    if (layer_state_is(NAV)) {
+        rgb_matrix_set_color_all(0, 7, 7);
+        set = true;
+    }
+
+    if (layer_state_is(FUN)) {
+        rgb_matrix_set_color_all(7, 0, 0);
+        set = true;
+    }
+
+    if (layer_state_is(MEDIA)) {
+        rgb_matrix_set_color_all(7, 0, 7);
+        set = true;
+    }
+
+    if (!set) {
         rgb_matrix_set_color_all(0, 0, 0);
     }
 
