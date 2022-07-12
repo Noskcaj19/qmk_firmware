@@ -38,13 +38,13 @@ qk_tap_dance_action_t tap_dance_actions[] = {
      KC_ESC,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                         KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_GRAVE, \
      MO(GAME_NUM), KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT, \
      KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, TD(TD_GAME),  \
-                                          KC_LCTL, KC_LALT, KC_SPC,     KC_ENT, KC_BSPC, KC_LGUI
+                                          KC_LCTL, KC_SPC, KC_LALT,      KC_ENT, KC_BSPC, KC_LGUI
 
 #define MIRYOKU_LAYER_BASE_WIDE \
-     XXXXXXX, KC_Y,             KC_C,          KC_L,         KC_M,         KC_K,  /*|*/   KC_Z, KC_F,         KC_U,         KC_COMM,        KC_QUOT,          XXXXXXX, \
-     XXXXXXX, LGUI_T(KC_I),     LALT_T(KC_S),  LCTL_T(KC_R), LSFT_T(KC_T), KC_G,  /*|*/   KC_P, LSFT_T(KC_N), LCTL_T(KC_E), LALT_T(KC_A),   LGUI_T(KC_O),     XXXXXXX,  \
-     XXXXXXX, LT(BUTTON, KC_Q), ALGR_T(KC_V),  KC_W,         KC_D,         KC_J,  /*|*/   KC_B, KC_H,         KC_SLSH,      ALGR_T(KC_DOT), LT(BUTTON, KC_X), TD(TD_GAME),  \
-                        LT(MEDIA, KC_ESC),   LT(NAV, KC_SPC),   LT(MOUSE, KC_TAB),      LT(SYM, KC_ENT),   LT(NUM, KC_BSPC),   LT(FUN, KC_DEL)
+     XXXXXXX,     KC_Y,             KC_C,          KC_L,         KC_M,         KC_K,  /*|*/   KC_Z, KC_F,         KC_U,         KC_COMM,        KC_QUOT,          XXXXXXX, \
+     XXXXXXX,     LGUI_T(KC_I),     LALT_T(KC_S),  LCTL_T(KC_R), LSFT_T(KC_T), KC_G,  /*|*/   KC_P, LSFT_T(KC_N), LCTL_T(KC_E), LALT_T(KC_A),   LGUI_T(KC_O),     XXXXXXX,  \
+     TD(TD_GAME), LT(BUTTON, KC_Q), ALGR_T(KC_V),  KC_W,         KC_D,         KC_J,  /*|*/   KC_B, KC_H,         KC_SLSH,      ALGR_T(KC_DOT), LT(BUTTON, KC_X), TD(TD_GAME),  \
+                        LT(MEDIA, KC_ESC),   LT(NAV, KC_SPC),   LT(MOUSE, KC_TAB),              LT(SYM, KC_ENT),   LT(NUM, KC_BSPC),   LT(FUN, KC_DEL)
 
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -61,10 +61,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 
-const uint16_t PROGMEM game_tab[] = {KC_ESC, MO(NUM), COMBO_END};
+const uint16_t PROGMEM game_tab[] = {
+  MO(GAME_NUM), KC_ESC, COMBO_END,
+};
+
+const uint16_t PROGMEM game_back[] = {
+  MO(GAME_NUM), KC_LSFT, COMBO_END,
+};
+
 combo_t key_combos[COMBO_COUNT] = {
     COMBO(game_tab, KC_TAB),
+    COMBO(game_back, KC_BSPC),
 };
+
+#if 0
 
 #if defined (MIRYOKU_KLUDGE_THUMBCOMBOS)
 const uint16_t PROGMEM thumbcombos_base_right[] = {LT(SYM, KC_ENT), LT(NUM, KC_BSPC), COMBO_END};
@@ -93,4 +103,6 @@ combo_t key_combos[COMBO_COUNT] = {
   #endif
   COMBO(thumbcombos_fun, KC_APP)
 };
+#endif
+
 #endif
