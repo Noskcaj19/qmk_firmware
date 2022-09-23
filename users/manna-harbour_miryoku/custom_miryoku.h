@@ -80,5 +80,7 @@ void rgb_matrix_indicators_kb(void) {
         } else {
             rgb_matrix_set_color(35, 25, 25, 25);
         }
+    } else if(is_caps_word_on()) {
+        rgb_matrix_set_color(35, 0, 15, 0);
     }
 }
