@@ -3,6 +3,13 @@
 
 * Miryoku QMK Development Branch Repository [[https://raw.githubusercontent.com/manna-harbour/miryoku/master/data/logos/miryoku-roa-32.png]]
 
+My (Noskcaj19) keyboards:
+- Corne
+- [[https://github.com/Noskcaj19/qmk_firmware/tree/miryoku-mine/keyboards/noskcaj19/scylla][Scylla]]
+- Keychron V1
+
+Variety of Miryoku tweaks [[https://github.com/Noskcaj19/qmk_firmware/tree/miryoku-mine/users/manna-harbour_miryoku][here]].
+
 [[https://raw.githubusercontent.com/manna-harbour/miryoku/master/data/cover/miryoku-kle-cover.png]]
 
 [[https://github.com/manna-harbour/miryoku/][Miryoku]] is an ergonomic, minimal, orthogonal, and universal keyboard layout.  This is the repository for the development branch of [[https://github.com/manna-harbour/miryoku_qmk/tree/miryoku/users/manna-harbour_miryoku][Miryoku QMK]].

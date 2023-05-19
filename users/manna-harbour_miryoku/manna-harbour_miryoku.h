@@ -5,6 +5,8 @@
 
 #pragma once
 
+#include "custom_layers.c"
+
 #include "miryoku_babel/miryoku_layer_selection.h"
 #include "miryoku_babel/miryoku_layer_list.h"
 
