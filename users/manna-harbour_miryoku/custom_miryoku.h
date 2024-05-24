@@ -15,22 +15,22 @@ void dance_game_finished(tap_dance_state_t *state, void *user_data) {
 //     [TD_GAME] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, dance_game_finished, NULL),
 // };
 
-#ifdef COMBO_ENABLED
+// #ifdef COMBO_ENABLED
 
-const uint16_t PROGMEM game_tab[] = {
-  MO(U_GAME_NUM), KC_ESC, COMBO_END,
-};
+// const uint16_t PROGMEM game_tab[] = {
+//   MO(U_GAME_NUM), KC_ESC, COMBO_END,
+// };
 
-const uint16_t PROGMEM game_back[] = {
-  MO(U_GAME_NUM), KC_LSFT, COMBO_END,
-};
+// const uint16_t PROGMEM game_back[] = {
+//   MO(U_GAME_NUM), KC_LSFT, COMBO_END,
+// };
 
-combo_t key_combos[COMBO_COUNT] = {
-    COMBO(game_tab, KC_TAB),
-    COMBO(game_back, KC_BSPC),
-};
+// combo_t key_combos[COMBO_COUNT] = {
+//     COMBO(game_tab, KC_TAB),
+//     COMBO(game_back, KC_BSPC),
+// };
 
-#endif
+// #endif
 
 #ifdef RGB_MATRIX_ENABLE
 
